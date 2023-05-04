@@ -6,6 +6,14 @@ import streamlit as st
 
 # Define a function 'app()' which accepts 'cc_df' as an input.
 def app(cc_df):
+    
+	st.header("Credit Card Defaulters Classification App")
+	st.text("""
+            This web app allows a user to predict the prices of a car based on their 
+            engine size, horse power, dimensions and the drive wheel type parameters.
+        	"""
+        	)
+    
     st.header("View Data")
     # Add an expander and display the dataset as a static table within the expander.
     with st.beta_expander("View Dataset"):
