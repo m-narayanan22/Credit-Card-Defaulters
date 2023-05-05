@@ -7,13 +7,12 @@ import streamlit as st
 # Define a function 'app()' which accepts 'cc_df' as an input.
 def app(cc_df):
     
-	st.header("Credit Card Defaulters Classification App")
-	st.text("""
-            A credit card is a financial instrument issued by banks with a pre-set credit limit, helping you make cashless transactions.
-	    Credit card companies make a huge profit by charging about 2% or 3% of the amount as a transaction fee to the merchant (or seller) at the point of sale.
-	    Credit cards must be used wisely and only when there is a need. From a consumer point of view, despite having risks, credit cards have few advantages too.
-        	"""
-        	)
+    st.header("Credit Card Defaulters Classification App")
+    st.text("""
+    A credit card is a financial instrument issued by banks with a pre-set credit limit, helping you make cashless transactions.
+    Credit card companies make a huge profit by charging about 2% or 3% of the amount as a transaction fee to the merchant (or seller) at the point of sale.
+    Credit cards must be used wisely and only when there is a need. From a consumer point of view, despite having risks, credit cards have few advantages too.
+    """)
     
     st.header("View Data")
     # Add an expander and display the dataset as a static table within the expander.
