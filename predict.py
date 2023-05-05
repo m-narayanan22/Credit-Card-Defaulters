@@ -19,26 +19,14 @@ from sklearn.metrics import plot_confusion_matrix
 @st.cache()
 def prediction(model, LIMIT_BAL, SEX, EDUCATION, MARRIAGE, AGE, PAY_0, PAY_2, PAY_3, PAY_4, PAY_5, PAY_6, BILL_AMT1, BILL_AMT2, BILL_AMT3,
                BILL_AMT4, BILL_AMT5, BILL_AMT6, PAY_AMT1, PAY_AMT2, PAY_AMT3, PAY_AMT4, PAY_AMT5, PAY_AMT6):
-    X = cc_df.iloc[:, :-1] 
-    y = cc_df['Default']
-    scaler= StandardScaler()
-    X= scaler.fit_transform(X)
-    
-    X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.20,random_state=42)
-    X_train,y_train= SMOTE.fit_resample(X_train,y_train)
-    
-    # RFC Model
-    rf= RandomForestClassifier()
-    rf.fit(X_train,y_train)
-    score = rf.score(X_train, y_train)
-    # pred_rf= rf.predict(X_test)
+
     default = model.predict([[LIMIT_BAL, SEX, EDUCATION, MARRIAGE, AGE, PAY_0, PAY_2, PAY_3, PAY_4, PAY_5, PAY_6, BILL_AMT1, BILL_AMT2, BILL_AMT3,
                BILL_AMT4, BILL_AMT5, BILL_AMT6, PAY_AMT1, PAY_AMT2, PAY_AMT3, PAY_AMT4, PAY_AMT5, PAY_AMT6]])
     default = default[0]
     
     if default == 1:
         return "the client is a defaulter".upper()
-    elif glass_type == 0:
+    else:
         return "the client is not a defaulter".upper()
 
 #     print("Random Forest Accuracy is:", accuracy_score(y_test, pred_rf))
@@ -47,13 +35,21 @@ def prediction(model, LIMIT_BAL, SEX, EDUCATION, MARRIAGE, AGE, PAY_0, PAY_2, PA
 
 #     plot_confusion_matrix(rf, X_test, y_test, cmap="Blues_r")
 
-    return default
+  #  return default
 
 # Defining a function 'app()' which accepts 'car_df' as an input.
 def app(cc_df): 
     st.markdown("<p style='color:blue;font-size:25px'>Credit Card Defaulter Classifier", unsafe_allow_html = True) 
     classifier = st.selectbox("Classifier", 
                                  ('Random Forest Classifier', 'XGBoost Classifier'))
+    
+    X = cc_df.iloc[:, :-1] 
+    y = cc_df['Default']
+    scaler= StandardScaler()
+    X= scaler.fit_transform(X)
+    
+    X_train,X_test,y_train,y_test= train_test_split(X,y,test_size=0.20,random_state=42)
+    X_train,y_train= SMOTE.fit_resample(X_train,y_train)
     
     if classifier == 'Random Forest Classifier':
         st.subheader("Model Hyperparameters")
