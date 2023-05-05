@@ -68,7 +68,7 @@ def app(cc_df):
             default = prediction(rf_clf, LIMIT_BAL, SEX, EDUCATION, MARRIAGE, AGE, PAY_0, PAY_2, PAY_3, PAY_4, PAY_5, PAY_6, BILL_AMT1, BILL_AMT2, BILL_AMT3,
                BILL_AMT4, BILL_AMT5, BILL_AMT6, PAY_AMT1, PAY_AMT2, PAY_AMT3, PAY_AMT4, PAY_AMT5, PAY_AMT6)
            
-            st.write(default)
+            st.success(default)
             st.write("Accuracy", accuracy.round(2))
             plot_confusion_matrix(rf_clf, X_test, y_test)
             st.pyplot()
@@ -117,37 +117,36 @@ def app(cc_df):
     elif MARRIAGE == 'Others':
         MARRIAGE = 3
     AGE = st.slider("Age", int(cc_df["AGE"].min()), float(cc_df["AGE"].max())) 
-    PAY_0 = st.slider("Repayment Status in Sep 2005 (-1 denotes no dues)", int(-1, 9) 
-    PAY_2 = st.slider("Repayment Status in Aug 2005 (-1 denotes no dues)", int(-1, 9)
-    PAY_3 = st.slider("Repayment Status in July 2005 (-1 denotes no dues)", int(-1, 9)
-    PAY_4 = st.slider("Repayment Status in June 2005 (-1 denotes no dues)", int(-1, 9)
-    PAY_5 = st.slider("Repayment Status in May 2005 (-1 denotes no dues)", int(-1, 9)
-    PAY_6 = st.slider("Repayment Status in Apr 2005 (-1 denotes no dues)", int(-1, 9)
-    BILL_AMT1 = st.slider("Bill Amount in Sep 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT1"].min()), float(cc_df["BILL_AMT1"].max()))
-    BILL_AMT2 = st.slider("Bill Amount in Aug 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT2"].min()), float(cc_df["BILL_AMT2"].max()))
-    BILL_AMT3 = st.slider("Bill Amount in July 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT3"].min()), float(cc_df["BILL_AMT3"].max()))
-    BILL_AMT4 = st.slider("Bill Amount in June 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT4"].min()), float(cc_df["BILL_AMT4"].max()))
-    BILL_AMT5 = st.slider("Bill Amount in May 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT5"].min()), float(cc_df["BILL_AMT5"].max()))
-    BILL_AMT6 = st.slider("Bill Amount in Apr 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT6"].min()), float(cc_df["BILL_AMT6"].max()))
-    hor_pow = st.slider("Horse Power", int(car_df["horsepower"].min()), int(car_df["horsepower"].max()))    
-    drw_fwd = st.radio("Is it a forward drive wheel car?", ("Yes", "No"))
-    
-    com_bui = st.radio("Is the car manufactured by Buick?", ("Yes", "No"))
-    if com_bui == 'No':
-        com_bui = 0
-    else:
-        com_bui = 1
+    PAY_0 = st.slider("Repayment Status in Sep 2005 (-1 denotes no dues)", int(-1, 9)) 
+    PAY_2 = st.slider("Repayment Status in Aug 2005 (-1 denotes no dues)", int(-1, 9))
+    PAY_3 = st.slider("Repayment Status in July 2005 (-1 denotes no dues)", int(-1, 9))
+    PAY_4 = st.slider("Repayment Status in June 2005 (-1 denotes no dues)", int(-1, 9))
+    PAY_5 = st.slider("Repayment Status in May 2005 (-1 denotes no dues)", int(-1, 9))
+    PAY_6 = st.slider("Repayment Status in Apr 2005 (-1 denotes no dues)", int(-1, 9))
+    BILL_AMT1 = st.slider("Bill Amount in Sep 2005", float(cc_df["BILL_AMT1"].min()), float(cc_df["BILL_AMT1"].max()))
+    BILL_AMT2 = st.slider("Bill Amount in Aug 2005", float(cc_df["BILL_AMT2"].min()), float(cc_df["BILL_AMT2"].max()))
+    BILL_AMT3 = st.slider("Bill Amount in July 2005", float(cc_df["BILL_AMT3"].min()), float(cc_df["BILL_AMT3"].max()))
+    BILL_AMT4 = st.slider("Bill Amount in June 2005", float(cc_df["BILL_AMT4"].min()), float(cc_df["BILL_AMT4"].max()))
+    BILL_AMT5 = st.slider("Bill Amount in May 2005", float(cc_df["BILL_AMT5"].min()), float(cc_df["BILL_AMT5"].max()))
+    BILL_AMT6 = st.slider("Bill Amount in Apr 2005", float(cc_df["BILL_AMT6"].min()), float(cc_df["BILL_AMT6"].max()))
+    PAY_AMT1 = st.slider("Previous Payment in Sep 2005", float(cc_df["PAY_AMT1"].min()), float(cc_df["PAY_AMT1"].max()))
+    PAY_AMT2 = st.slider("Repayment Status in Aug 2005", float(cc_df["PAY_AMT2"].min()), float(cc_df["PAY_AMT2"].max()))
+    PAY_AMT3 = st.slider("Repayment Status in July 2005", float(cc_df["PAY_AMT3"].min()), float(cc_df["PAY_AMT3"].max()))
+    PAY_AMT4 = st.slider("Repayment Status in June 2005", float(cc_df["PAY_AMT4"].min()), float(cc_df["PAY_AMT4"].max()))
+    PAY_AMT5 = st.slider("Repayment Status in May 2005", float(cc_df["PAY_AMT5"].min()), float(cc_df["PAY_AMT5"].max()))
+    PAY_AMT6 = st.slider("Repayment Status in Apr 2005", float(cc_df["PAY_AMT6"].min()), float(cc_df["PAY_AMT6"].max()))
+   
     
     # When 'Predict' button is clicked, the 'prediction()' function must be called 
     # and the value returned by it must be stored in a variable, say 'price'. 
     # Print the value of 'price' and 'score' variable using the 'st.success()' and 'st.info()' functions respectively.
-    if st.button("Predict"):
-        st.subheader("Prediction results:")
-        price, score, car_r2, car_mae, car_msle, car_rmse = prediction(car_df, car_wid, eng_siz, hor_pow, drw_fwd, com_bui)
-        st.success("The predicted price of the car: ${:,}".format(int(price)))
-        #st.info("Accuracy score of this model is: {:2.2%}".format(score))
-        st.info(f"R-squared score of this model is: {car_r2:.3f}")  
-        st.info(f"Mean absolute error of this model is: {car_mae:.3f}")  
-        st.info(f"Mean squared log error of this model is: {car_msle:.3f}")  
-        st.info(f"Root mean squared error of this model is: {car_rmse:.3f}")
+#     if st.button("Classify"):
+#         st.subheader("Classification result:")
+#         price, score, car_r2, car_mae, car_msle, car_rmse = prediction(car_df, car_wid, eng_siz, hor_pow, drw_fwd, com_bui)
+#         st.success("The predicted price of the car: ${:,}".format(int(price)))
+#         #st.info("Accuracy score of this model is: {:2.2%}".format(score))
+#         st.info(f"R-squared score of this model is: {car_r2:.3f}")  
+#         st.info(f"Mean absolute error of this model is: {car_mae:.3f}")  
+#         st.info(f"Mean squared log error of this model is: {car_msle:.3f}")  
+#         st.info(f"Root mean squared error of this model is: {car_rmse:.3f}")
 
