@@ -22,7 +22,7 @@ def app(cc_df):
 
     st.subheader("Data Description:")
     if st.checkbox("Show summary"):
-        st.table(cc_df.info())
+        st.table(cc_df.describe())
 
     beta_col1, beta_col2, beta_col3 = st.beta_columns(3)
 
@@ -33,8 +33,8 @@ def app(cc_df):
 
     # Add a checkbox in the second column. Display the column data-types of 'cc_df' on the click of checkbox.
     with beta_col2:
-        if st.checkbox("View column data-type"):
-            st.table(cc_df.dtypes)
+        if st.checkbox("Data Information"):
+            st.table(cc_df.info)
 
     # Add a checkbox in the third column followed by a selectbox which accepts the column name whose data needs to be displayed.
     with beta_col3:
