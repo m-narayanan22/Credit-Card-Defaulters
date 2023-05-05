@@ -109,7 +109,26 @@ def app(cc_df):
         EDUCATION = 4
     elif EDUCATION == 'Unknown Education':
         EDUCATION = 5
-    eng_siz = st.slider("Engine Size", int(car_df["enginesize"].min()), int(car_df["enginesize"].max()))
+    MARRIAGE = st.radio("MARRIAGE", ("Married", "Unmarried", "Others"))
+    if MARRIAGE == 'Married':
+        MARRIAGE = 1
+    elif MARRIAGE == 'Unmarried':
+        MARRIAGE = 2
+    elif MARRIAGE == 'Others':
+        MARRIAGE = 3
+    AGE = st.slider("Age", int(cc_df["AGE"].min()), float(cc_df["AGE"].max())) 
+    PAY_0 = st.slider("Repayment Status in Sep 2005 (-1 denotes no dues)", int(-1, 9) 
+    PAY_2 = st.slider("Repayment Status in Aug 2005 (-1 denotes no dues)", int(-1, 9)
+    PAY_3 = st.slider("Repayment Status in July 2005 (-1 denotes no dues)", int(-1, 9)
+    PAY_4 = st.slider("Repayment Status in June 2005 (-1 denotes no dues)", int(-1, 9)
+    PAY_5 = st.slider("Repayment Status in May 2005 (-1 denotes no dues)", int(-1, 9)
+    PAY_6 = st.slider("Repayment Status in Apr 2005 (-1 denotes no dues)", int(-1, 9)
+    BILL_AMT1 = st.slider("Bill Amount in Sep 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT1"].min()), float(cc_df["BILL_AMT1"].max()))
+    BILL_AMT2 = st.slider("Bill Amount in Aug 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT2"].min()), float(cc_df["BILL_AMT2"].max()))
+    BILL_AMT3 = st.slider("Bill Amount in July 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT3"].min()), float(cc_df["BILL_AMT3"].max()))
+    BILL_AMT4 = st.slider("Bill Amount in June 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT4"].min()), float(cc_df["BILL_AMT4"].max()))
+    BILL_AMT5 = st.slider("Bill Amount in May 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT5"].min()), float(cc_df["BILL_AMT5"].max()))
+    BILL_AMT6 = st.slider("Bill Amount in Apr 2005 (-1 denotes no dues)", float(cc_df["BILL_AMT6"].min()), float(cc_df["BILL_AMT6"].max()))
     hor_pow = st.slider("Horse Power", int(car_df["horsepower"].min()), int(car_df["horsepower"].max()))    
     drw_fwd = st.radio("Is it a forward drive wheel car?", ("Yes", "No"))
     
